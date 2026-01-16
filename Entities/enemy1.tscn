@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://chc85qxuqeoh8"]
+
+[ext_resource type="Script" path="res://Entities/enemy1.gd" id="1_l5jsh"]
+[ext_resource type="AudioStream" uid="uid://cgmcsoafbnjy2" path="res://Sounds/deltarune-explosion.mp3" id="2_woxb8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q4a78"]
+size = Vector3(1, 2, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_7ywxx"]
+radial_segments = 32
+rings = 4
+
+[sub_resource type="BoxMesh" id="BoxMesh_72e0u"]
+size = Vector3(1, 0.2, 0.21)
+
+[node name="Enemy1" type="CharacterBody3D" groups=["enemy"]]
+script = ExtResource("1_l5jsh")
+
+[node name="Collision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_q4a78")
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_7ywxx")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Mesh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -0.5)
+mesh = SubResource("BoxMesh_72e0u")
+
+[node name="Direction" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+
+[node name="Sfx" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_woxb8")
+unit_size = 1.0
+max_polyphony = 2
+bus = &"Sfx"
+
+[node name="HurtRay" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+exclude_parent = false
+target_position = Vector3(0, 0, -2)
+collide_with_areas = true

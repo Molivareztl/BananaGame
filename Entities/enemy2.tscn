@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=3 uid="uid://d07trmws56xli"]
+
+[ext_resource type="Script" path="res://Entities/enemy2.gd" id="1_efs8v"]
+[ext_resource type="AudioStream" uid="uid://cgmcsoafbnjy2" path="res://Sounds/deltarune-explosion.mp3" id="2_qj203"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ksipm"]
+size = Vector3(1, 0.2, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_ngkbr"]
+radial_segments = 8
+rings = 4
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_7wgrx"]
+top_radius = 0.2
+bottom_radius = 0.2
+height = 0.5
+radial_segments = 6
+rings = 1
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_r82wa"]
+size = Vector3(1, 1.2, 1)
+
+[node name="enemy2" type="CharacterBody3D" groups=["enemy"]]
+script = ExtResource("1_efs8v")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+mesh = SubResource("BoxMesh_ksipm")
+
+[node name="Direction" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, -0.5)
+
+[node name="Pivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.684281, 0)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Pivot"]
+mesh = SubResource("SphereMesh_ngkbr")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pivot/MeshInstance3D2"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -0.5)
+mesh = SubResource("CylinderMesh_7wgrx")
+
+[node name="HurtRay" type="RayCast3D" parent="Pivot"]
+target_position = Vector3(0, 0, -25)
+
+[node name="Sfx" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_qj203")
+unit_size = 1.0
+max_polyphony = 2
+bus = &"Sfx"
+
+[node name="Collision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+shape = SubResource("BoxShape3D_r82wa")

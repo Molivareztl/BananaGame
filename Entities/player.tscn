@@ -1,0 +1,191 @@
+[gd_scene load_steps=6 format=3 uid="uid://21hhqu4yiui0"]
+
+[ext_resource type="Script" path="res://Entities/player.gd" id="1_8ldym"]
+[ext_resource type="Texture2D" uid="uid://tcoxgyn82fap" path="res://Textures/crosshair.png" id="2_2hgis"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_m6dab"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7rnmv"]
+height = 1.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_twu1k"]
+size = Vector3(0.5, 0.5, 1)
+
+[node name="Player" type="CharacterBody3D" groups=["player"]]
+script = ExtResource("1_8ldym")
+
+[node name="NormalCollision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_m6dab")
+
+[node name="CrouchCollision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("CapsuleShape3D_7rnmv")
+
+[node name="Pivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Pivot"]
+doppler_tracking = 1
+current = true
+fov = 120.0
+near = 0.001
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pivot/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.722158, -0.31443, -0.884971)
+mesh = SubResource("BoxMesh_twu1k")
+skeleton = NodePath("../..")
+
+[node name="ShootRay" type="RayCast3D" parent="Pivot/Camera3D"]
+exclude_parent = false
+target_position = Vector3(0, 0, -25)
+collide_with_areas = true
+
+[node name="BarrelBegin" type="Node3D" parent="Pivot/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.654949, -0.299305, -1.38309)
+
+[node name="BarrelEnd" type="Node3D" parent="Pivot/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -25)
+
+[node name="CrouchRay" type="RayCast3D" parent="."]
+target_position = Vector3(0, 2, 0)
+
+[node name="HUD" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="Crosshair" type="Control" parent="HUD"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="HUD/Crosshair"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -9.0
+offset_top = -9.0
+offset_right = 9.0
+offset_bottom = 9.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_2hgis")
+
+[node name="ALotOfDamage" type="Control" parent="HUD"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="HUD/ALotOfDamage"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0, 0, 0.211765)
+
+[node name="Death" type="Control" parent="HUD"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 236.0
+offset_top = 236.0
+offset_right = 276.0
+offset_bottom = 276.0
+
+[node name="Label" type="Label" parent="HUD/Death"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -72.0
+offset_right = 72.0
+offset_bottom = 26.0
+grow_horizontal = 2
+text = "YOU LOSE !!!!!11!!!!!"
+
+[node name="Button" type="Button" parent="HUD/Death"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -30.0
+offset_top = -15.0
+offset_right = 31.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "restart"
+
+[node name="Pause" type="Control" parent="HUD"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="HUD/Pause"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.419608, 0.419608, 0.419608, 0.545098)
+
+[node name="Label" type="Label" parent="HUD/Pause"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -102.0
+offset_top = -122.0
+offset_right = 102.0
+offset_bottom = -96.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "pauseeeeeeeeeeeeeeeeee
+"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/Pause"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="continue" type="Button" parent="HUD/Pause/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Contniue"

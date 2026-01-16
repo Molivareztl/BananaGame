@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://b7jh28unvh0qa"]
+
+[ext_resource type="Script" path="res://Entities/player_bullet_trail.gd" id="1_07qyu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dsvhd"]
+shading_mode = 0
+disable_ambient_light = true
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_qy252"]
+
+[node name="BulletTrail" type="MeshInstance3D"]
+material_override = SubResource("StandardMaterial3D_dsvhd")
+cast_shadow = 0
+mesh = SubResource("ImmediateMesh_qy252")
+script = ExtResource("1_07qyu")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
