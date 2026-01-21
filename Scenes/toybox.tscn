@@ -77,9 +77,6 @@ mesh = SubResource("CylinderMesh_8bpes")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D3/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_qj6c7")
 
-[node name="enemy2" parent="MeshInstance3D3" instance=ExtResource("2_apthp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.95667, -0.928583, 0)
-
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.32578, -0.380076, 0.0492177)
 mesh = SubResource("PrismMesh_yu057")
@@ -91,5 +88,7 @@ shape = SubResource("ConvexPolygonShape3D_kwea2")
 
 [node name="Sky" parent="." instance=ExtResource("2_emhxq")]
 
+[node name="enemy2" parent="." instance=ExtResource("2_apthp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.67215, 2, 12.6895)
+
 [node name="Enemy1" parent="." instance=ExtResource("4_f2ld7")]
-transform = Transform3D(0.999983, -0.00577701, 0, 0.00577701, 0.999983, 0, 0, 0, 1, -9.17687, 0, 0)
