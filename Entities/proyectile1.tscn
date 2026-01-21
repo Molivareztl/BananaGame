@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://cbrupkse4yxiq"]
+
+[ext_resource type="Script" path="res://Entities/proyectile1.gd" id="1_lb1mk"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_mhrmi"]
+radius = 0.1
+height = 0.2
+radial_segments = 8
+rings = 4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ym6sx"]
+shading_mode = 0
+disable_ambient_light = true
+albedo_color = Color(1, 1, 0, 1)
+
+[node name="Proyectile1" type="Node3D"]
+script = ExtResource("1_lb1mk")
+
+[node name="HurtRay" type="RayCast3D" parent="."]
+exclude_parent = false
+target_position = Vector3(0, 0, -1)
+collide_with_areas = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_mhrmi")
+surface_material_override/0 = SubResource("StandardMaterial3D_ym6sx")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
