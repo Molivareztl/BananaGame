@@ -65,6 +65,7 @@ func hurt(damage):
 	if health <= 0:
 		health = 0
 		$HUD/Death.show()
+		get_tree().paused = true
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 func shoot():
@@ -80,5 +81,7 @@ func shoot():
 		await get_tree().create_timer(0.5).timeout 
 		can_shoot = true
 
-
-
+func _on_continue_pressed():
+	get_tree().paused = false
+	$HUD/Pause.hide()
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED

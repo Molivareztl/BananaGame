@@ -51,6 +51,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -25)
 target_position = Vector3(0, 2, 0)
 
 [node name="HUD" type="CanvasLayer" parent="."]
+process_mode = 3
 follow_viewport_enabled = true
 
 [node name="Crosshair" type="Control" parent="HUD"]
@@ -189,3 +190,5 @@ grow_vertical = 2
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Contniue"
+
+[connection signal="pressed" from="HUD/Pause/VBoxContainer/continue" to="." method="_on_continue_pressed"]
