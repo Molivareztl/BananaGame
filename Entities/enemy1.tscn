@@ -34,7 +34,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
 [node name="Sfx" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("2_woxb8")
 unit_size = 1.0
-max_polyphony = 2
+max_polyphony = 10
 bus = &"Sfx"
 
 [node name="HurtRay" type="RayCast3D" parent="."]
