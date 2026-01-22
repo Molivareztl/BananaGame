@@ -47,7 +47,7 @@ target_position = Vector3(0, 0, -25)
 [node name="Sfx" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("2_qj203")
 unit_size = 1.0
-max_polyphony = 2
+max_polyphony = 10
 bus = &"Sfx"
 
 [node name="Collision" type="CollisionShape3D" parent="."]
