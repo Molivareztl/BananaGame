@@ -55,6 +55,8 @@ func _physics_process(delta):
 	if Input.is_action_pressed("shoot") and can_shoot == true:
 		can_shoot = false
 		shoot()
+		await get_tree().create_timer(0.5).timeout 
+		can_shoot = true
 	move_and_slide()
 
 func hurt(damage):
@@ -77,9 +79,6 @@ func shoot():
 	else:
 		instance.draw(pos1.global_position, pos2.global_position)
 	get_parent().add_child(instance)
-	if can_shoot == false:
-		await get_tree().create_timer(0.5).timeout 
-		can_shoot = true
 
 func _on_continue_pressed():
 	get_tree().paused = false

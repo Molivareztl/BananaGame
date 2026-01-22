@@ -24,9 +24,8 @@ func attack():
 	if h_ray.is_colliding() and h_ray.get_collider().is_in_group("player") and can_hurt == true:
 		can_hurt = false
 		h_ray.get_collider().hurt(1)
-		if can_hurt == false:
-			await get_tree().create_timer(2).timeout 
-			can_hurt = true
+		await get_tree().create_timer(2).timeout 
+		can_hurt = true
 
 func hurt(damage):
 	sfx.play()
