@@ -17,6 +17,10 @@ var trail = load("res://Entities/player_bullet_trail.tscn")
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	update_display()
+
+func update_display():
+	$HUD/Health/HealthDisplay.text = str(health)
 
 func _unhandled_input(event):
 	if event is InputEventMouseMotion:
@@ -61,6 +65,7 @@ func _physics_process(delta):
 
 func hurt(damage):
 	health -= damage
+	update_display()
 	$HUD/ALotOfDamage.show()
 	await get_tree().create_timer(0.2).timeout
 	$HUD/ALotOfDamage.hide()
@@ -69,6 +74,10 @@ func hurt(damage):
 		$HUD/Death.show()
 		get_tree().paused = true
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+
+func heal(amount):
+	health += amount
+	update_display()
 
 func shoot():
 	var instance
@@ -84,3 +93,6 @@ func _on_continue_pressed():
 	get_tree().paused = false
 	$HUD/Pause.hide()
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+
+func _on_restart_pressed():
+	get_tree().reload_current_scene()

@@ -2,11 +2,9 @@ extends CharacterBody3D
 var health = 5
 @onready var player : CharacterBody3D = get_tree().get_first_node_in_group("player")
 @onready var face = $Direction
-@onready var collision = $Collision
 @onready var pivot = $Pivot
 @onready var h_ray = $Pivot/HurtRay
 @onready var sfx = $Sfx
-@onready var h_timer = $HurtTimer
 @onready var proyectile = preload("res://Entities/proyectile1.tscn")
 var gravity = 20
 var can_hurt = true
@@ -15,11 +13,11 @@ func _physics_process(delta):
 	face.look_at(player.global_position)
 	pivot.rotation.y = face.rotation.y
 	pivot.rotation.x = clamp((face.rotation.x + 0.2), -180, 360)
-	
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 	move_and_slide()
 	attack()
+
 func attack():
 	if h_ray.is_colliding() and h_ray.get_collider().is_in_group("player") and can_hurt == true:
 		can_hurt = false

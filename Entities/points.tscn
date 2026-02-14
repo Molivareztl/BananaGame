@@ -1,0 +1,86 @@
+[gd_scene load_steps=13 format=3 uid="uid://l4lm7x3ctxh0"]
+
+[ext_resource type="Script" path="res://Entities/points.gd" id="1_dxho2"]
+[ext_resource type="Texture2D" uid="uid://c5psl208sqear" path="res://Textures/banana.png" id="2_0gdjk"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xx2lm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p8674"]
+atlas = ExtResource("2_0gdjk")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dajfo"]
+atlas = ExtResource("2_0gdjk")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o14x1"]
+atlas = ExtResource("2_0gdjk")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l8u05"]
+atlas = ExtResource("2_0gdjk")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oguni"]
+atlas = ExtResource("2_0gdjk")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5m784"]
+atlas = ExtResource("2_0gdjk")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sllpk"]
+atlas = ExtResource("2_0gdjk")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1cv4d"]
+atlas = ExtResource("2_0gdjk")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_higwx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p8674")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dajfo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o14x1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l8u05")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oguni")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5m784")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sllpk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1cv4d")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Points" type="Node3D"]
+script = ExtResource("1_dxho2")
+
+[node name="Area" type="Area3D" parent="."]
+
+[node name="Collision" type="CollisionShape3D" parent="Area"]
+shape = SubResource("BoxShape3D_xx2lm")
+
+[node name="Sprite" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
+billboard = 2
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_higwx")
+
+[connection signal="body_entered" from="Area" to="." method="_on_area_3d_body_entered"]

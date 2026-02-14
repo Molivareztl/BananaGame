@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cn86y6v3qenrw"
-path="res://.godot/imported/bullet hole.jpeg-e5d8380b375cbc0b954b6ca36f6231d9.ctex"
+uid="uid://b7h1hmkpe2o5r"
+path="res://.godot/imported/mantexture.png-e8fef99fa59efc652af2801dbe512e9e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/bullet hole.jpeg"
-dest_files=["res://.godot/imported/bullet hole.jpeg-e5d8380b375cbc0b954b6ca36f6231d9.ctex"]
+source_file="res://Textures/mantexture.png"
+dest_files=["res://.godot/imported/mantexture.png-e8fef99fa59efc652af2801dbe512e9e.ctex"]
 
 [params]
 

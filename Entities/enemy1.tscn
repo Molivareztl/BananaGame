@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://chc85qxuqeoh8"]
+[gd_scene load_steps=7 format=3 uid="uid://chc85qxuqeoh8"]
 
 [ext_resource type="Script" path="res://Entities/enemy1.gd" id="1_l5jsh"]
 [ext_resource type="AudioStream" uid="uid://cgmcsoafbnjy2" path="res://Sounds/deltarune-explosion.mp3" id="2_woxb8"]
+[ext_resource type="ArrayMesh" uid="uid://bkoa8quin37rb" path="res://Models/man.obj" id="3_yccm3"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_q4a78"]
 size = Vector3(1, 2, 1)
@@ -22,6 +23,7 @@ shape = SubResource("BoxShape3D_q4a78")
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+visible = false
 mesh = SubResource("CapsuleMesh_7ywxx")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Mesh"]
@@ -42,3 +44,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 exclude_parent = false
 target_position = Vector3(0, 0, -2)
 collide_with_areas = true
+
+[node name="Man" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.237, 0, 0, 0, 0.237, 0, 0, 0, 0.237, 0, 0, 0)
+mesh = ExtResource("3_yccm3")

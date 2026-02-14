@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://21hhqu4yiui0"]
+[gd_scene load_steps=7 format=3 uid="uid://21hhqu4yiui0"]
 
 [ext_resource type="Script" path="res://Entities/player.gd" id="1_8ldym"]
 [ext_resource type="Texture2D" uid="uid://tcoxgyn82fap" path="res://Textures/crosshair.png" id="2_2hgis"]
+[ext_resource type="Script" path="res://Entities/dialogue.gd" id="3_qqns4"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_m6dab"]
 
@@ -123,7 +124,7 @@ offset_bottom = 26.0
 grow_horizontal = 2
 text = "YOU LOSE !!!!!11!!!!!"
 
-[node name="Button" type="Button" parent="HUD/Death"]
+[node name="Restart" type="Button" parent="HUD/Death"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -191,4 +192,53 @@ layout_mode = 2
 size_flags_horizontal = 4
 text = "Contniue"
 
+[node name="Health" type="Control" parent="HUD"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HealthDisplay" type="Label" parent="HUD/Health"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 33.0
+scale = Vector2(4, 4)
+text = "asd"
+
+[node name="dialogue" type="Control" parent="HUD" groups=["dialogue"]]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("3_qqns4")
+
+[node name="Background" type="ColorRect" parent="HUD/dialogue"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 307.0
+offset_top = 39.0
+offset_right = -45.0
+offset_bottom = -209.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.07, 16.41, 0.05, 0.32)
+
+[node name="Text" type="RichTextLabel" parent="HUD/dialogue/Background"]
+texture_filter = 1
+clip_contents = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+
+[connection signal="pressed" from="HUD/Death/Restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="HUD/Pause/VBoxContainer/continue" to="." method="_on_continue_pressed"]

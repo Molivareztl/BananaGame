@@ -1,8 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://c7y7uiwtr5of8"]
+[gd_scene load_steps=17 format=3 uid="uid://c7y7uiwtr5of8"]
 
 [ext_resource type="PackedScene" uid="uid://21hhqu4yiui0" path="res://Entities/player.tscn" id="1_x2fnh"]
-[ext_resource type="PackedScene" uid="uid://d07trmws56xli" path="res://Entities/enemy2.tscn" id="2_apthp"]
 [ext_resource type="PackedScene" uid="uid://do4i0s1knpl1v" path="res://Scenes/skytest.tscn" id="2_emhxq"]
+[ext_resource type="PackedScene" uid="uid://chc85qxuqeoh8" path="res://Entities/enemy1.tscn" id="4_2mdfe"]
+[ext_resource type="PackedScene" uid="uid://l4lm7x3ctxh0" path="res://Entities/points.tscn" id="4_fcyev"]
+[ext_resource type="PackedScene" uid="uid://dhndhrlay0ft" path="res://Scenes/testtesttttt.tscn" id="5_qxjsi"]
+[ext_resource type="PackedScene" uid="uid://d16fxav08rltj" path="res://Entities/npc.tscn" id="6_t5jea"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_pmsoo"]
 size = Vector3(50, 0.2, 50)
@@ -39,7 +42,7 @@ points = PackedVector3Array(0.5, -0.5, 1, 0, 0.5, 1, -0.5, -0.5, 1, 0.5, -0.5, -
 [node name="Scene" type="Node3D"]
 
 [node name="player" parent="." instance=ExtResource("1_x2fnh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10.9051)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -39.2739, -1.40955, -8.37601)
 
 [node name="Sky" parent="." instance=ExtResource("2_emhxq")]
 
@@ -95,11 +98,49 @@ skeleton = NodePath("../..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/MeshInstance3D4/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_kwea2")
 
-[node name="enemy2" parent="." instance=ExtResource("2_apthp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.36421, -0.167338, -3.34511)
+[node name="Points" parent="." instance=ExtResource("4_fcyev")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -10)
 
-[node name="enemy3" parent="." instance=ExtResource("2_apthp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2024, 1.27158, 2.49439)
+[node name="Points2" parent="." instance=ExtResource("4_fcyev")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -12.3542)
 
-[node name="enemy4" parent="." instance=ExtResource("2_apthp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.60738, -0.373669, 2.49439)
+[node name="Points3" parent="." instance=ExtResource("4_fcyev")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -7.44639)
+
+[node name="Enemy1" parent="." instance=ExtResource("4_2mdfe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9.36164)
+
+[node name="Node3D2" parent="." instance=ExtResource("5_qxjsi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60.6725, -5.82348, -2.80254)
+
+[node name="npc" parent="." instance=ExtResource("6_t5jea")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.8843, -1.49357, -12.8057)
+dialogue = "este es el texto normal."
+
+[node name="npc2" parent="." instance=ExtResource("6_t5jea")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.3109, -1.49357, -12.8057)
+dialogue = "[color=red]este es el texto de color."
+
+[node name="npc3" parent="." instance=ExtResource("6_t5jea")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50.1568, -1.49357, -12.8057)
+dialogue = "[shake]el texto que tiembla."
+
+[node name="npc4" parent="." instance=ExtResource("6_t5jea")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -54.8753, -1.49357, -12.8057)
+dialogue = "[wave]texto asi bien de como olas."
+
+[node name="npc5" parent="." instance=ExtResource("6_t5jea")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60.1184, -1.49357, -12.8057)
+dialogue = "[tornado] TORNADOOOOOOOOOOOOOOOWOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO"
+
+[node name="npc6" parent="." instance=ExtResource("6_t5jea")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60.1184, -5.48065, -3.84362)
+dialogue = "[fade start=0 length=10]AYUDAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa[/fade]"
+
+[node name="npc7" parent="." instance=ExtResource("6_t5jea")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -54.805, -5.48065, -3.84362)
+dialogue = "[i][center]soy [b][color=red][u]italiano[/u]"
+
+[node name="npc8" parent="." instance=ExtResource("6_t5jea")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.6245, -5.48065, 0.101975)
+dialogue = "[shake level = 100] yo soy [rainbow][tornado]gay"
