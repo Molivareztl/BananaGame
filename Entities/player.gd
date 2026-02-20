@@ -1,23 +1,22 @@
 extends CharacterBody3D
-var health = 5
+@export var health = 100
 var speed = 10
 var jump = 8
 var gravity = 20
 var sensitivity = 100
 @onready var pivot = $Pivot
-@onready var camera = $Pivot/Camera3D
+@onready var camera = $Pivot/Camera
 @onready var standing = $NormalCollision
 @onready var crounching = $CrouchCollision
 @onready var c_ray = $CrouchRay
-@onready var s_ray = $Pivot/Camera3D/ShootRay
-@onready var pos1 = $Pivot/Camera3D/BarrelBegin
-@onready var pos2 = $Pivot/Camera3D/BarrelEnd
 var can_shoot = true
+var shake_strength = 0.0
 var trail = load("res://Entities/player_bullet_trail.tscn")
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	update_display()
+	$HUD/ALotOfDamage/HudSprite.play("Idle")
 
 func update_display():
 	$HUD/Health/HealthDisplay.text = str(health)
@@ -56,19 +55,16 @@ func _physics_process(delta):
 	else:
 		velocity.z = 0
 		velocity.x = 0
-	if Input.is_action_pressed("shoot") and can_shoot == true:
-		can_shoot = false
-		shoot()
-		await get_tree().create_timer(0.5).timeout 
-		can_shoot = true
 	move_and_slide()
 
 func hurt(damage):
 	health -= damage
 	update_display()
-	$HUD/ALotOfDamage.show()
-	await get_tree().create_timer(0.2).timeout
-	$HUD/ALotOfDamage.hide()
+	$HUD/ALotOfDamage/HudSprite.play("Hurt")
+	$HUD/Health/HealthDisplay.hide()
+	await $HUD/ALotOfDamage/HudSprite.animation_finished
+	$HUD/ALotOfDamage/HudSprite.play("Idle")
+	$HUD/Health/HealthDisplay.show()
 	if health <= 0:
 		health = 0
 		$HUD/Death.show()
@@ -78,16 +74,6 @@ func hurt(damage):
 func heal(amount):
 	health += amount
 	update_display()
-
-func shoot():
-	var instance
-	instance = trail.instantiate()
-	if s_ray.is_colliding() and s_ray.get_collider().is_in_group("enemy"):
-		s_ray.get_collider().hurt(1)
-		instance.draw(pos1.global_position, s_ray.get_collision_point())
-	else:
-		instance.draw(pos1.global_position, pos2.global_position)
-	get_parent().add_child(instance)
 
 func _on_continue_pressed():
 	get_tree().paused = false

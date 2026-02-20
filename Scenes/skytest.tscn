@@ -6,12 +6,12 @@
 panorama = ExtResource("1_4xpoe")
 filter = false
 
-[sub_resource type="Sky" id="Sky_fxk36"]
+[sub_resource type="Sky" id="Sky_d6g4b"]
 sky_material = SubResource("PanoramaSkyMaterial_c8cfe")
 
 [sub_resource type="Environment" id="Environment_vsrqa"]
 background_mode = 2
-sky = SubResource("Sky_fxk36")
+sky = SubResource("Sky_d6g4b")
 sky_custom_fov = 90.0
 fog_enabled = true
 fog_light_color = Color(0.462745, 1, 1, 1)

@@ -13,9 +13,11 @@ func _physics_process(delta):
 	rotate_y(face.rotation.y * 0.05)
 	if not is_on_floor():
 		velocity.y -= gravity * delta
-		var dir = (player.global_position - global_position).normalized()
-		velocity.x = dir.x * speed
-		velocity.z = dir.z * speed
+	var dir = (player.global_position - global_position).normalized()
+	velocity.x = dir.x * speed
+	velocity.z = dir.z * speed
+	if can_hurt == true:
+		$Model/AnimationPlayer.play("run")
 	move_and_slide()
 	attack()
 
@@ -23,14 +25,22 @@ func attack():
 	if h_ray.is_colliding() and h_ray.get_collider().is_in_group("player") and can_hurt == true:
 		can_hurt = false
 		h_ray.get_collider().hurt(1)
-		await get_tree().create_timer(2).timeout 
+		speed = 0
+		$Model/AnimationPlayer.play("idle")
+		await get_tree().create_timer(1).timeout 
 		can_hurt = true
+		speed = 5.0
 
 func hurt(damage):
 	sfx.play()
 	health = health - damage
 	if health <= 0:
+		can_hurt = false
+		$Model/AnimationPlayer.play("death")
 		h_ray.enabled = false
 		speed = 0
-		await get_tree().create_timer(1).timeout 
+		await $Model/AnimationPlayer.animation_finished
 		queue_free()
+
+func _exit_tree(): # When someone calls queue_free() here
+	$Model/Skeleton/banana_man.set("surface_material_override/0", null)
