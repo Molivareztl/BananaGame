@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cytgr6vqm55wh"
+path="res://.godot/imported/tutorial.obj-c319c71a626045ee3361150cea24437e.mesh"
+
+[deps]
+
+files=["res://.godot/imported/tutorial.obj-c319c71a626045ee3361150cea24437e.mesh"]
+
+source_file="res://Models/tutorial.obj"
+dest_files=["res://.godot/imported/tutorial.obj-c319c71a626045ee3361150cea24437e.mesh", "res://.godot/imported/tutorial.obj-c319c71a626045ee3361150cea24437e.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

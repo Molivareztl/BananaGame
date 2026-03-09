@@ -1,11 +1,25 @@
-[gd_scene load_steps=18 format=3 uid="uid://c7y7uiwtr5of8"]
+[gd_scene load_steps=21 format=3 uid="uid://c7y7uiwtr5of8"]
 
 [ext_resource type="PackedScene" uid="uid://21hhqu4yiui0" path="res://Entities/player.tscn" id="1_x2fnh"]
-[ext_resource type="PackedScene" uid="uid://do4i0s1knpl1v" path="res://Scenes/skytest.tscn" id="2_emhxq"]
-[ext_resource type="PackedScene" uid="uid://chc85qxuqeoh8" path="res://Entities/enemy1.tscn" id="4_2mdfe"]
+[ext_resource type="Texture2D" uid="uid://0jytmhlvemt1" path="res://Textures/blue-cloudy-sky-texture_9942048.jpeg" id="2_hx118"]
 [ext_resource type="PackedScene" uid="uid://l4lm7x3ctxh0" path="res://Entities/points.tscn" id="4_fcyev"]
 [ext_resource type="PackedScene" uid="uid://dhndhrlay0ft" path="res://Scenes/testtesttttt.tscn" id="5_qxjsi"]
+[ext_resource type="PackedScene" uid="uid://bpyqwew7w0obh" path="res://Entities/enemy2.tscn" id="6_its4v"]
 [ext_resource type="PackedScene" uid="uid://d16fxav08rltj" path="res://Entities/npc.tscn" id="6_t5jea"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_c8cfe"]
+panorama = ExtResource("2_hx118")
+filter = false
+
+[sub_resource type="Sky" id="Sky_q0vnd"]
+sky_material = SubResource("PanoramaSkyMaterial_c8cfe")
+
+[sub_resource type="Environment" id="Environment_vsrqa"]
+background_mode = 2
+sky = SubResource("Sky_q0vnd")
+sky_custom_fov = 90.0
+fog_enabled = true
+fog_light_color = Color(0.462745, 1, 1, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_pmsoo"]
 size = Vector3(50, 0.2, 50)
@@ -46,7 +60,15 @@ points = PackedVector3Array(0.5, -0.5, 1, 0, 0.5, 1, -0.5, -0.5, 1, 0.5, -0.5, -
 [node name="player" parent="." instance=ExtResource("1_x2fnh")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 12.7561, -1.40955, -8.37601)
 
-[node name="Sky" parent="." instance=ExtResource("2_emhxq")]
+[node name="Sky" type="Node3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Sky"]
+environment = SubResource("Environment_vsrqa")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Sky/WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 0.474088, 0.880477, 0, -0.880477, 0.474088, 0, 0, 0)
+light_color = Color(1, 1, 0.654902, 1)
+light_bake_mode = 0
 
 [node name="Node3D" type="Node3D" parent="."]
 
@@ -149,5 +171,5 @@ dialogue = "[i][center]soy [b][color=red][u]italiano[/u]"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.6245, -5.48065, 0.101975)
 dialogue = "[shake level = 100] yo soy [rainbow][tornado]gay"
 
-[node name="Enemy1" parent="." instance=ExtResource("4_2mdfe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.3515, -0.900002, -12.0689)
+[node name="enemy2" parent="." instance=ExtResource("6_its4v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 1, -8)

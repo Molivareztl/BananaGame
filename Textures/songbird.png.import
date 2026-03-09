@@ -2,22 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ct7d2shsssvnn"
-path.s3tc="res://.godot/imported/man_mantexture.png-86b7890f6f1053ecb65d8171839a8c64.s3tc.ctex"
+uid="uid://nsar4jhambp3"
+path="res://.godot/imported/songbird.png-1b6a02dfe9f30e31e499e9e539050adc.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
-generator_parameters={}
 
 [deps]
 
-source_file="res://Models/man_mantexture.png"
-dest_files=["res://.godot/imported/man_mantexture.png-86b7890f6f1053ecb65d8171839a8c64.s3tc.ctex"]
+source_file="res://Textures/songbird.png"
+dest_files=["res://.godot/imported/songbird.png-1b6a02dfe9f30e31e499e9e539050adc.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
@@ -27,7 +25,7 @@ mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
-process/fix_alpha_border=true
+process/fix_alpha_border=false
 process/premult_alpha=false
 process/normal_map_invert_y=false
 process/hdr_as_srgb=false

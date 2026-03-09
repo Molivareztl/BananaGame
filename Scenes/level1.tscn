@@ -1,0 +1,44 @@
+[gd_scene load_steps=8 format=3 uid="uid://birpf03va6umd"]
+
+[ext_resource type="PackedScene" uid="uid://21hhqu4yiui0" path="res://Entities/player.tscn" id="1_27bde"]
+[ext_resource type="Texture2D" uid="uid://0jytmhlvemt1" path="res://Textures/blue-cloudy-sky-texture_9942048.jpeg" id="2_bcjgm"]
+[ext_resource type="ArrayMesh" uid="uid://d2kaic8siucdx" path="res://Models/level1.obj" id="3_quhqk"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_x1ra4"]
+data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -14, 1, 0, -14, -1, 0, 1, -1, 0, -14, 1, 0, -14, -1, 0, -14, 1, 0, -20, 1, 0, -20, -1, 0, -14, -3, 0, -20, -3, 0, -20, -1, 0, -14, -6, 0, -21, -6, 0, -21, -1, 0, -14, -6, 0, -15, -6, 0, -21, -6, 0, -15, -13, 0, -21, -13, 0, -21, -6, 0, -15, -13, 0, -15, 1, 0, -14, 1, 0, -20, 7, 0, -13, 7, 0, -13, 1, 0, -20, 9, 0, -19, 7, 0, -13, 9, 0, -19, 14, 0, -13, 14, 0, -13, 9, 0, -19, 14, 0, -19, 14, 0, -13, 14, 0, -19, 21, 0, -17, 21, 0, -17, 14, 0, -19, 21, 0, -23, 1, 0, -20, -3, 0, -20, 1, 2, -27, 1, 2, -27, -3, 0, -20, -3, 2, -27, 9, 0, -19, 1, 0, -20, 9, 2, -26, 9, 2, -26, 1, 0, -20, 1, 2, -27, 1, 2, -27, -3, 2, -27, 1, 2, -33, 1, 2, -33, -3, 2, -27, -4, 2, -33, 9, 2, -26, 1, 2, -27, 10, 2, -32, 10, 2, -32, 1, 2, -27, 1, 2, -33, -13, 0, -15, -6, 0, -15, -13, -4.9473, -15, -13, -4.9473, -15, -6, 0, -15, -6, -4.9473, -15, 7, 0, -13, 14, 0, -13, 7, -4.9473, -13, 7, -4.9473, -13, 14, 0, -13, 14, -4.9473, -13, -1, 0, 1, 1, 0, 1, -1, -4.9473, 1, -1, -4.9473, 1, 1, 0, 1, 1, -4.9473, 1, -6, 0, -15, -1, 0, -14, -6, -4.9473, -15, -6, -4.9473, -15, -1, 0, -14, -1, -4.9473, -14, 1, 0, -14, 7, 0, -13, 1, -4.9473, -14, 1, -4.9473, -14, 7, 0, -13, 7, -4.9473, -13, 1, 0, 1, 1, 0, -14, 1, -4.9473, 1, 1, -4.9473, 1, 1, 0, -14, 1, -4.9473, -14, 21, 0, -17, 21, 0, -23, 21, -4.9473, -17, 21, -4.9473, -17, 21, 0, -23, 21, -4.9473, -23, -13, 0, -21, -13, 0, -15, -13, -4.9473, -21, -13, -4.9473, -21, -13, 0, -15, -13, -4.9473, -15, -1, 0, -14, -1, 0, 1, -1, -4.9473, -14, -1, -4.9473, -14, -1, 0, 1, -1, -4.9473, 1, 14, 0, -13, 21, 0, -17, 14, -4.9473, -13, 14, -4.9473, -13, 21, 0, -17, 21, -4.9473, -17, -3, 0, -20, -6, 0, -21, -3, 4, -20, -3, 4, -20, -6, 0, -21, -6, 4, -21, 21, 0, -23, 14, 0, -19, 21, 4, -23, 21, 4, -23, 14, 0, -19, 14, 4, -19, -6, 0, -21, -13, 0, -21, -6, 4, -21, -6, 4, -21, -13, 0, -21, -13, 4, -21, 14, 0, -19, 9, 0, -19, 14, 4, -19, 14, 4, -19, 9, 0, -19, 9, 4, -19, 9, 4, -19, 9, 0, -19, 9, 4, -26, 9, 4, -26, 9, 0, -19, 9, 0, -26, -3, 0, -20, -3, 4, -20, -3, 0, -27, -3, 0, -27, -3, 4, -20, -3, 4, -27, 9, 4, -26, 9, 0, -26, 10, 4, -32, 10, 4, -32, 9, 0, -26, 10, 0, -32, -3, 0, -27, -3, 4, -27, -4, 0, -33, -4, 0, -33, -3, 4, -27, -4, 4, -33)
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_j0nb2"]
+panorama = ExtResource("2_bcjgm")
+filter = false
+
+[sub_resource type="Sky" id="Sky_7msti"]
+sky_material = SubResource("PanoramaSkyMaterial_j0nb2")
+
+[sub_resource type="Environment" id="Environment_mka7n"]
+background_mode = 2
+sky = SubResource("Sky_7msti")
+sky_custom_fov = 90.0
+fog_enabled = true
+fog_light_color = Color(0.462745, 1, 1, 1)
+
+[node name="Scene" type="Node3D"]
+
+[node name="Player" parent="." instance=ExtResource("1_27bde")]
+
+[node name="Level1" type="MeshInstance3D" parent="."]
+mesh = ExtResource("3_quhqk")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Level1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level1/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_x1ra4")
+
+[node name="Sky" type="Node3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Sky"]
+environment = SubResource("Environment_mka7n")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Sky/WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 0.474088, 0.880477, 0, -0.880477, 0.474088, 0, 0, 0)
+light_color = Color(1, 1, 0.654902, 1)
+light_bake_mode = 0

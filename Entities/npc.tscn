@@ -17,6 +17,7 @@ radius = 2.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ogc3q"]
 albedo_texture = ExtResource("3_o8bp6")
+texture_filter = 0
 
 [node name="npc" type="CharacterBody3D" groups=["npc"]]
 script = ExtResource("1_e2ylk")

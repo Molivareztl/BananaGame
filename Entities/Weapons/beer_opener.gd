@@ -14,7 +14,7 @@ func _input(_event):
 		shoot()
 		display.play("revolver_shoot")
 		stomach -= hunger
-	if Input.is_action_just_released("shoot"):
+		await display.animation_finished
 		can_shoot = true
 	if Input.is_action_just_pressed("check"):
 		display.play("revolver_check_in")

@@ -8,11 +8,14 @@ var health = 5
 @onready var proyectile = preload("res://Entities/proyectile1.tscn")
 var gravity = 20
 var can_hurt = true
+@onready var skeleton = $Model/Skeleton
 
 func _physics_process(delta):
+	var head = skeleton.find_bone("head")
 	face.look_at(player.global_position)
 	pivot.rotation.y = face.rotation.y
-	pivot.rotation.x = clamp((face.rotation.x + 0.2), -180, 360)
+	pivot.rotation.x = face.rotation.x
+	skeleton.set_bone_pose_rotation(head,Quaternion.from_euler(pivot.rotation))
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 	move_and_slide()
