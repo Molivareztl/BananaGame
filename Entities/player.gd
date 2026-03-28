@@ -30,11 +30,13 @@ func _physics_process(delta):
 	if Input.is_action_pressed("crouch"):
 		pivot.position.y = 1.0
 		speed = 5
+		gravity = 80
 		standing.disabled = true
 		crounching.disabled = false
 	elif !c_ray.is_colliding():
 		pivot.position.y = 1.5
 		speed = 10
+		gravity = 20
 		standing.disabled = false
 		crounching.disabled = true
 	if not is_on_floor():

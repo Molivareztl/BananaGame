@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://0jytmhlvemt1"
-path="res://.godot/imported/blue-cloudy-sky-texture_9942048.jpeg-ba866bba10101a54d8efd73c970f8046.ctex"
+uid="uid://dx6o66l7gbveq"
+path="res://.godot/imported/sunset.png-3041ba2a0c583b7f439861ba4cc97b2e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/blue-cloudy-sky-texture_9942048.jpeg"
-dest_files=["res://.godot/imported/blue-cloudy-sky-texture_9942048.jpeg-ba866bba10101a54d8efd73c970f8046.ctex"]
+source_file="res://Textures/sunset.png"
+dest_files=["res://.godot/imported/sunset.png-3041ba2a0c583b7f439861ba4cc97b2e.ctex"]
 
 [params]
 
@@ -19,12 +19,12 @@ compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/normal_map=1
+compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=1
-roughness/src_normal="res://Textures/blue-cloudy-sky-texture_9942048.jpeg"
+roughness/mode=0
+roughness/src_normal=""
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false
